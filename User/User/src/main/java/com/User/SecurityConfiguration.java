@@ -34,19 +34,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .oauth2Login();
     }
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("http://five-lions-e6156.com"));
-        configuration.setAllowedMethods(Arrays.asList("GET"));
-        //configuration.setAllowCredentials(true);
-        configuration.setAllowedHeaders(Arrays.asList("*"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
-
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
@@ -55,6 +42,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .roles("USER")
         ;
     }
-
-
 }
