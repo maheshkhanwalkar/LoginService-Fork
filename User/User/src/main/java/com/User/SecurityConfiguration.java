@@ -31,7 +31,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/login**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .oauth2Login().and().cors().configurationSource(corsConfigurationSource());
+                .oauth2Login()
+                .and().antMatcher("/oauth2/authorization/github")
+                .cors().configurationSource(corsConfigurationSource());
     }
 
     @Bean
