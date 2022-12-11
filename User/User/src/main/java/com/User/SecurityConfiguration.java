@@ -33,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .oauth2Login()
-                .and().antMatcher("/oauth2/authorization/github")
+                .and()
                 .cors().configurationSource(corsConfigurationSource());
     }
 
@@ -41,13 +41,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Collections.singletonList("http://five-lions-e6156.com"));
-        configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
+        configuration.setAllowedMethods(Arrays.asList("GET"));
         //configuration.setAllowCredentials(true);
-        configuration.setAllowedHeaders(Arrays.asList(
-                "Accept", "Origin", "Content-Type", "Depth", "User-Agent", "If-Modified-Since,",
-                "Cache-Control", "Authorization", "X-Req", "X-File-Size", "X-Requested-With", "X-File-Name"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration("/oauth2/**", configuration);
         return source;
     }
 
