@@ -26,7 +26,6 @@ import java.util.*;
 //https://spring.io/guides/tutorials/spring-boot-oauth2/
 
 
-//@RestController
 @CrossOrigin
 @Controller
 public class UserController {

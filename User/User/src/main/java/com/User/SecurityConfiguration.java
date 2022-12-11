@@ -27,14 +27,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/**")
+        http
                 .authorizeRequests()
-                .antMatchers("/", "/login**").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .oauth2Login();
+        /*http.antMatcher("/**")
+                .authorizeRequests()
+                .antMatchers("/", "/login**").permitAll()
+                .anyRequest().authenticated().and()
+                .oauth2Login();
 
-        http.cors().configurationSource(corsConfigurationSource());
+        http.cors().configurationSource(corsConfigurationSource());*/
     }
 
     @Bean
