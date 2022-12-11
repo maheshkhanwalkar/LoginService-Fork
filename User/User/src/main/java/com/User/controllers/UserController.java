@@ -94,7 +94,8 @@ public class UserController {
 	@GetMapping("/myID")
 	@ResponseBody
 	public String getID(@AuthenticationPrincipal OAuth2User oAuth2User){
-		String id = mysql_query("jdbc:mysql://users-e6156.cexqeqvqreq2.us-east-1.rds.amazonaws.com:3306/UserData?autoReconnect=true&useSSL=false","root","dbuserdbuser","SELECT id FROM UserData.loginData WHERE gitHubID = "+oAuth2User.getName() );
+		String name = oAuth2User.getName();
+		String id = mysql_query("jdbc:mysql://users-e6156.cexqeqvqreq2.us-east-1.rds.amazonaws.com:3306/UserData?autoReconnect=true&useSSL=false","root","dbuserdbuser","SELECT id FROM UserData.loginData WHERE gitHubID = "+name);
 
 		if(id == null) {
 			return "";
