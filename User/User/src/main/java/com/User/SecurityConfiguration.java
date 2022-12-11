@@ -26,7 +26,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/**")
+        http.antMatcher("/oauth2/authorization/github")
+                .cors().configurationSource(corsConfigurationSource())
+                .and()
+                .antMatcher("/**")
                 .authorizeRequests()
                 .antMatchers("/", "/login**").permitAll()
                 .anyRequest().authenticated()
