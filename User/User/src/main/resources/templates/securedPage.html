@@ -7,7 +7,7 @@
 <script>
   fetch('https://api.five-lions-e6156.com/myID')
           .then(response => response.json())
-          .catch((e) => window.location.href = '/createUser.html')
+          //.catch(() => window.location.href = '/createUser.html')
           .then(code => console.log(code))
 </script>
 <body>
