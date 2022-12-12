@@ -66,7 +66,7 @@ public class UserController {
 	public String createUser() {
 		return "createUser.html";
 	}
-	
+
 	// Login form with error
 	//@CrossOrigin
 	@RequestMapping("/login-error.html")

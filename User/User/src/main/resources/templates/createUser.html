@@ -5,10 +5,42 @@
     <title>Create User</title>
 </head>
 <body>
-<h1>Create New User</h1>
-Name: <input type="text">
+<script>
+    function create() {
+        let url = 'https://api.five-lions-e6156.com/newuser';
 
-<a href="http://five-lions-e6156.com/feed">Go To Feed</a>
+        let firstName = document.getElementById('first-name').value
+        let lastName = document.getElementById('last-name').value
+        let userName = document.getElementById('user-name').value
+        let email = document.getElementById('email').value
+
+        const data = new FormData()
+
+        data.append('firstName', firstName)
+        data.append('lastName', lastName)
+        data.append('userName', userName)
+        data.append('email', email)
+
+        fetch(url, {
+            method: 'POST',
+            body: data
+        }).then(response => console.log(response))
+    }
+</script>
+<h1>Create New User</h1>
+First Name: <input id="first-name" type="text">
+<br/>
+<br/>
+Last Name: <input id="last-name" type="text">
+<br/>
+<br/>
+User Name: <input id="user-name" type="text">
+<br/>
+<br/>
+Email: <input id="email" type="text">
+<br/>
+<br/>
+<button onclick="create()">Create</button>
 
 </body>
 </html>
