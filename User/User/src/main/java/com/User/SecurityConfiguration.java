@@ -31,7 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/login**").permitAll()
                 .anyRequest().authenticated().and()
-                .oauth2Login();
+                .oauth2Login().and().csrf().disable();
     }
 
     @Override
