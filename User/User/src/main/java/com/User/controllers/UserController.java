@@ -78,7 +78,7 @@ public class UserController {
 	//adds a user from JSON input and adds a self referencing Link for Hateoas
 	//@CrossOrigin
 	//@PreAuthorize("#oauth2.hasScope('write')")
-	@PostMapping("/newuser")
+	@GetMapping("/newuser")
 	@ResponseBody
 	public User addUserProfile(@RequestBody User user, @AuthenticationPrincipal OAuth2User oauth2User) {
 		dao.save(user);
