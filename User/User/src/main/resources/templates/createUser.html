@@ -22,7 +22,7 @@
         data.append('email', email)
 
         fetch(url, {
-            method: 'POST',
+            method: 'GET',
             body: data
         }).then(response => console.log(response))
     }
